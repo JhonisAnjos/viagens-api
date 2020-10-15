@@ -26,4 +26,13 @@ public class HotelServlet extends HttpServlet{
 		
 		objectMapper.writeValue(resp.getOutputStream(), timtec);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		Hotel hotel =  objectMapper.readValue(req.getInputStream(), Hotel.class);
+		System.out.println(hotel.getNome());
+		System.out.println(hotel.getEndereco());
+	}
 }
